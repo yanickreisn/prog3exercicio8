@@ -1,0 +1,32 @@
+# Exceção personalizada para saldo insuficiente
+class SaldoInsuficienteError(Exception):
+    def __init__(self, saldo, valor_saque):
+        self.saldo = saldo
+        self.valor_saque = valor_saque
+        super().__init__(f"Erro: Saldo insuficiente. Você tem R${saldo:.2f} e tentou sacar R${valor_saque:.2f}.")
+
+# Função para realizar o saque
+def realizar_saque():
+    saldo = 1000.00  # Saldo inicial do usuário
+    try:
+        # Solicita o valor do saque ao usuário
+        valor_saque = float(input("Digite o valor para saque: R$ "))
+        
+        # Verifica se o valor do saque é maior que o saldo disponível
+        if valor_saque > saldo:
+            raise SaldoInsuficienteError(saldo, valor_saque)  # Lança a exceção personalizada
+        else:
+            saldo -= valor_saque  # Realiza o saque e atualiza o saldo
+            print(f"Saque de R${valor_saque:.2f} realizado com sucesso!")
+            print(f"Saldo atual: R${saldo:.2f}")
+    
+    except SaldoInsuficienteError as e:
+        # Exibe a mensagem de erro caso a exceção personalizada seja lançada
+        print(e)
+    
+    except ValueError:
+        # Trata o erro caso o usuário insira um valor inválido (não numérico)
+        print("Erro: Por favor, digite um valor válido para o saque.")
+
+# Chama a função para executar o programa
+realizar_saque()
