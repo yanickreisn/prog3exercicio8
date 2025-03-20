@@ -1,0 +1,21 @@
+# Função para acessar um elemento da lista com tratamento de exceções
+def acesso_elemento_lista():
+    lista = [10, 20, 30, 40, 50]  # Lista com cinco números
+    try:
+        # Solicita ao usuário o índice do elemento que deseja acessar
+        indice = int(input("Digite o índice (0 a 4) para acessar o valor na lista: "))
+
+        # Tenta acessar o elemento da lista
+        valor = lista[indice]
+        print(f"O valor no índice {indice} é: {valor}")
+        
+    except IndexError:
+        # Trata o erro de índice fora do intervalo
+        print("Erro: Índice inválido. O índice deve estar entre 0 e 4.")
+        
+    except ValueError:
+        # Trata o erro de entrada inválida (não um número inteiro)
+        print("Erro: Por favor, digite um número inteiro válido para o índice.")
+
+# Chama a função para executar o programa
+acesso_elemento_lista()
