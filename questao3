@@ -1,0 +1,16 @@
+# Função para pedir e converter a entrada do usuário até que seja válida
+def conversao_entrada():
+    while True:
+        try:
+            # Solicita ao usuário que digite um número inteiro
+            numero = int(input("Digite um número inteiro: "))
+            
+            # Exibe o dobro do número
+            print(f"O dobro do número {numero} é: {numero * 2}")
+            break  # Sai do loop após uma entrada válida
+        except ValueError:
+            # Trata o erro caso o valor informado não seja um número inteiro
+            print("Erro: Você deve digitar um número inteiro válido. Tente novamente.")
+
+# Chama a função para executar o programa
+conversao_entrada()
